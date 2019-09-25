@@ -8,17 +8,16 @@
 
 # 启动flask web服务器
 
-    export FLASK_APP=calculate/__init__.py
-    flask run
+    python app.py
     
 终端显示，默认在5000端口监听
 
-> \* Serving Flask app "calculate/__init__.py" <br>
-> \* Environment: production <br>
-> WARNING: This is a development server. Do not use it in a production deployment. <br>
-> Use a production WSGI server instead. <br>
-> \* Debug mode: off <br>
-> \* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit) <br>
+> \* Serving Flask app "app" (lazy loading)
+> \* Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+> \* Debug mode: off
+> \* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 
 # 测试服务
 可能使用任何web客户端和浏览器测试服务。推荐使用[Postman](https://www.getpostman.com/).
