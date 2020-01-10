@@ -3,7 +3,7 @@ import pytest
 from flask import Flask
 from flask.testing import FlaskClient
 
-from calculate.cal import bp
+from flaskr.func import bp
 
 
 @pytest.fixture
