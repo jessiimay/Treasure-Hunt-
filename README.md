@@ -4,7 +4,7 @@
 
 - 文件目录：
 
-  |——flaskr
+  |—flaskr
 
   ​		|————\_init\_.py
 
@@ -14,7 +14,7 @@
 
   ​		|————func.py		用户功能实现
 
-  |——tests
+  |—tests
 
   ​		|————\_init\_.py
 
@@ -22,9 +22,9 @@
 
   ​		|————test_func.py	测试用户功能
 
-  |——venv								环境
+  |—venv								环境
 
-  |——README.md
+  |README.md
 
 - 自定义的函数：
 
@@ -63,7 +63,7 @@
 
 ## 表格设计（示意）
 
-![1572240884726](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\1572240884726.png)
+![1572240884726](README.assets/1572240884726.png)
 
 ## 测试结果：
 
