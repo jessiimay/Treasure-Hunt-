@@ -7,9 +7,8 @@ import random
 
 
 bp = Blueprint("login", __name__, url_prefix="/try")
- 
 myclient = pymongo.MongoClient('mongodb://localhost:27017/')
-db = myclient['mygame']
+db = myclient['treasure_hunt']
 
 #MY COLUMNS
 USR = db['usr']

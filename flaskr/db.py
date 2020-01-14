@@ -4,7 +4,7 @@ from mongoengine import *
 
 app = Flask(__name__)
 app.config['MONGODB_SETTINGS'] = {
-    "db": "mygame"
+    "db": "treasure_hunt"
 }
 db = MongoEngine(app)
 
@@ -52,9 +52,9 @@ t7=treasure('t7',0, 40, 40)
 t7.save()
 t8=treasure('t8',80, 0, 80)
 t8.save()
-usr(uid='doge', money=0, luck=0).save()
-usr(uid='peggy', money=80, luck=40).save()
-usr(uid='海绵宝宝', money=120, luck=20,work=40,case=[t6,t7,t8],wear_on=[t1]).save()    
+usr(uid='海绵宝宝', money=0, luck=0).save()
+usr(uid='peggy', money=80, luck=40,work=10).save()
+usr(uid='doge', money=120, luck=20,work=40).save()    
 market(tr_onsale='t6',saler='peggy').save()
-market(tr_onsale='t7',saler='doge').save()
-market(tr_onsale='t8',saler='海绵宝宝').save()
+market(tr_onsale='t7',saler='海绵宝宝').save()
+market(tr_onsale='t8',saler='doge').save()

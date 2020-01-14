@@ -10,5 +10,6 @@ from flaskr.func import bp
 def client() -> FlaskClient:
     app: Flask = Flask(__name__)
     app.register_blueprint(bp)
+    app.testing = True
     client: FlaskClient = app.test_client()
     return client

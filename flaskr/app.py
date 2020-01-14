@@ -35,7 +35,8 @@ def tomorrow():
         print("@\t")
         for name in users:
             # 20s as a day
-            USR.update_many({'_id':name},{'$set':{'FLAG_work':False,'FLAG_explore':False}})
+            USR.update_one({'_id':name},{'$set':{'FLAG_work':False}})
+            USR.update_one({'_id':name},{'$set':{'FLAG_explore':False}})
         time.sleep(10)
 
 timer=threading.Timer(0,tomorrow)
