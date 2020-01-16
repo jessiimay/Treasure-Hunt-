@@ -3,7 +3,7 @@
 import os
 import sys
 from flask import Flask
-from .func import bp
+from func import bp
 import threading
 import time
 import signal
@@ -12,10 +12,11 @@ import sys
 
 file_dir = os.path.dirname(__file__)
 sys.path.append(file_dir)
+
+
 app = Flask(__name__)
-users = ['doge', 'peggy', '海绵宝宝']
-myclient = pymongo.MongoClient('mongodb://localhost:27017/')
-db = myclient['mygame']
+app.config['SQLALCHEMY_DATABASE_URI'] =  'postgresql://postgres:1747@localhost:5432/treasure_hunt'
+db = SQLAlchemy(app)
 #MY COLUMNS
 USR = db['usr']
 MKT = db['market']

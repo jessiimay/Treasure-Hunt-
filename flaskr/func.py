@@ -3,12 +3,12 @@ from flask import jsonify
 from flask import Flask
 import pymongo
 import random
-
+from app import db
 
 
 bp = Blueprint("login", __name__, url_prefix="/try")
-myclient = pymongo.MongoClient('mongodb://localhost:27017/')
-db = myclient['treasure_hunt']
+# myclient = pymongo.MongoClient('mongodb://localhost:27017/')
+# db = myclient['treasure_hunt']
 
 #MY COLUMNS
 USR = db['usr']
