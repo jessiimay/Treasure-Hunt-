@@ -1,18 +1,20 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import pdb
 
-db = SQLAlchemy()
 
-def create_app():
-    app = Flask(__name__,instance_relative_config=False)
-    # db.init_app(app)
-    # app.config.from_object(config.Config)
-    app.config['SQLALCHEMY_DATABASE_URI'] =  'postgresql://postgres:1747@localhost:5432/treasure_hunt'
-    db = SQLAlchemy(app)
+app = Flask(__name__,instance_relative_config=False)
+app.config['SQLALCHEMY_DATABASE_URI'] =  'postgresql://postgres:1747@localhost:5432/treasure_hunt'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+from . import models
+db.create_all()
+from . import db
 
-    with app.app_context():
-        import routes
+db.session.commit()
+# pdb.set_trace()
+# with app.app_context():
+#     from . import db
 
-        db.create_all()
-        print('@@@@@@')
-        return app
+#     db.create_all()
+#     print('@@@@@@')

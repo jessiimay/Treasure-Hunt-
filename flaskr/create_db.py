@@ -1,7 +1,7 @@
 from flask import request, render_template, make_response
 from datetime import datetime
 from flask import current_app as app
-from models import db, user, treasure, own, market
+from .models import db, user, treasure, own, market
 
 @app.route('/', methods-['GET'])
 def create_db():
@@ -35,3 +35,5 @@ def create_db():
     db.session.add(o2)
     db.session.add(o3)
     db.session.commit()
+
+    return make_response("db created!")

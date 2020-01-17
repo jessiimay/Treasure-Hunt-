@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import datetime
-from __init__ import db
+from .__init__ import db
 
 class user(db.Model):
     uid = db.Column(db.String(100), primary_key=True)
@@ -29,7 +29,7 @@ class treasure(db.Model):
     tid = db.Column(db.String(100), primary_key=True)
     luck = db.Column(db.Integer)
     work = db.Column(db.Integer)
-    price = db.Column(db.Integer)
+    price = db.Column(db.Integer,index=True)
 
     def __init__(self, tid, luck, work, price):
         self.tid = tid
@@ -44,8 +44,8 @@ class treasure(db.Model):
 
 class own(db.Model):
     oid = db.Column(db.String(100), primary_key=True)
-    uid = db.Column(db.String(100), db.ForeignKey('User.uid'))
-    tid = db.Column(db.String(100), db.ForeignKey('Treasure.tid'))
+    uid = db.Column(db.String(100), db.ForeignKey('user.uid'),index=True)
+    tid = db.Column(db.String(100), db.ForeignKey('treasure.tid'),index=True)
     wearing_state = db.Column(db.Boolean)
     
     def __init__(self,uid,tid):
@@ -60,8 +60,8 @@ class own(db.Model):
 
 class market(db.Model):
     mid = db.Column(db.String(200), primary_key=True)
-    tid = db.Column(db.String(100), db.ForeignKey('Treasure.tid'))
-    seller = db.Column(db.String(100), db.ForeignKey('User.uid'))
+    tid = db.Column(db.String(100), db.ForeignKey('treasure.tid'),index=True)
+    seller = db.Column(db.String(100), db.ForeignKey('user.uid'),index=True)
     buyer = db.Column(db.String(100))
 
     def __init__(self,seller,tid):
