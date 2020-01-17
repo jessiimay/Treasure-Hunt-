@@ -1,4 +1,4 @@
-# Treasure Hunt! @基于flask-sqlalchemy的实现
+# Treasure Hunt! @基于flask-sqlAlchemy的实现
 考虑以下游戏场景：
 1.	每个游戏玩家都有一定数量的金币、宝物。有一个市场供玩家们买卖宝物。玩家可以将宝物放到市场上挂牌，自己确定价格。其他玩家支付足够的金币，可购买宝物。
 2.	宝物分为两类：一类为工具，它决定持有玩家的工作能力；一类为配饰，它决定持有玩家的运气。
@@ -20,27 +20,27 @@
 
 - 文件目录：
 
-  |—flaskr
+  |—flaskr/
 
-  ​		|————\_init\_.py
+  |————\_init\_.py							创建db、bp；initialize tables；另起线程实现“每天”的流逝
 
-  ​		|————app.py		另起线程实现“每天”的流逝
+  |————models.py						定义了数据库schema
 
-  ​		|————db.py 		将创建数据库（的某个状态）分离出来
+  |————create_db.py 				  初始化数据库表中用户、宝物等数据，建立初始状态
 
-  ​		|————func.py		用户功能实现
+  |————func.py							 用户功能的实现
 
-  |—tests
+  |—tests/
 
-  ​		|————\_init\_.py
+  |————\_init\_.py
 
-  ​		|————conftest.py	定义client
+  |————conftest.py					 定义client
 
-  ​		|————test_func.py	测试用户功能
+  |————test_func.py				   测试用户功能
 
-  |—venv								环境
+  |—venv/										  环境
 
-  |README.md
+  |—README.md
 
 - 自定义的函数：
 
