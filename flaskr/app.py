@@ -34,7 +34,7 @@ def tomorrow():
     # try:
     while 1:
         print("@\t")
-        for name in users:
+        for name in ['u1','peggy','doge']:
             # 20s as a day
             USR.update_one({'_id':name},{'$set':{'FLAG_work':False}})
             USR.update_one({'_id':name},{'$set':{'FLAG_explore':False}})

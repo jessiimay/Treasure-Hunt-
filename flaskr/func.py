@@ -1,19 +1,22 @@
-from flask import Blueprint
 from flask import jsonify
 from flask import Flask
-import pymongo
+from flask_sqlalchemy import SQLAlchemy
 import random
-from app import db
+from .__init__ import db
+from .__init__ import bp
+
+#MY TABLES
+from .models import user as USR
+from .models import treasure as TRS
+from .models import own as OWN
+from .models import market as MKT
 
 
-bp = Blueprint("login", __name__, url_prefix="/try")
-# myclient = pymongo.MongoClient('mongodb://localhost:27017/')
-# db = myclient['treasure_hunt']
+# bp = Blueprint("login", __name__, url_prefix="/try")
 
-#MY COLUMNS
-USR = db['usr']
-MKT = db['market']
-TRS = db['treasure']
+
+
+
 
 # retrive attribute of usr according to usrname
 def GetU(usr_name, attri):
