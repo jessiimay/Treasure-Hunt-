@@ -3,7 +3,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import random
 from .__init__ import db
-from .__init__ import bp
+# from .__init__ import bp
 
 #MY TABLES
 from .models import user as USR
@@ -12,7 +12,7 @@ from .models import own as OWN
 from .models import market as MKT
 
 
-# bp = Blueprint("login", __name__, url_prefix="/try")
+bp = Blueprint("bp", __name__, url_prefix="/try")
 
 
 
@@ -20,24 +20,40 @@ from .models import market as MKT
 
 # retrive attribute of usr according to usrname
 def GetU(usr_name, attri):
-  return USR.find_one({'_id':usr_name})[attri]
+    u_tmp = USR.query.filter_by(uid=usr_name)
+    return u_tmp.attri
 # retrive attribute of treasure according to tr_name
 def GetTr(tr_name, attri):
-  return TRS.find_one({'_id':tr_name})[attri]
+    t_tmp = TRS.query.filter_by(tid=tr_name)
+    return t_tmp.attri
+def UpdateU(usr_name,attri,new_val):
+    u_tmp = USR.query.filter_by(uid=usr_name)
+    u_tmp.attri = new_val
+    db.session.commit()
+    return ok
+def UpdateTr(tr_name,attri,new_val):
+    t_tmp = TRS.query.filter_by(tid=tr_name)
+    t_tmp.attri = new_val
+    db.session.commit()
+    return ok
 
+    
 # show the content of a collection
 # for debugging
-def dump(CLT):
-  for i in CLT.find():
-    print(i)
-  return 0
+def dump(TBL):
+    try: 
+        num_rows_deleted = db.session.query(TBL).delete() 
+        db.session.commit() 
+    except: 
+        db.session.rollback() 
+    return 0
 # reset the collection MKT
 # for debugging
-@bp.route("/reset/<string:CLT>",methods=['GET'])
-def reset(CLT):
-  db[CLT].delete()
-  dump(db[CLT])
-  return "Market reset!"
+# @bp.route("/reset/<string:CLT>",methods=['GET'])
+# def reset(CLT):
+#   db[CLT].delete()
+#   dump(db[CLT])
+#   return "Market reset!"
 
 # LOGIN & SHOW USR_INFO
 # as all the accounts are created by myself, for convenience, password unused here
@@ -45,7 +61,7 @@ def reset(CLT):
 def login(name):
     IF_NEW = False
     # if it's a new usr, sign up for him and show IF_NEW tag
-    if USR.find_one({'uid': name}) == 0:   
+    if USR.query.filter_by(uidd='name'):   
       USR.insert_one({'uid':name, 'money':0,'luck':0})
       IF_NEW = True
     info = USR.find_one({"_id":name})
